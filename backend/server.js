@@ -1,7 +1,10 @@
 const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
-const PORT = 5000;
+
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
@@ -11,6 +14,15 @@ app.get("/", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`TaskFlow server running on http://localhost:${PORT}`);
-});
+mongoose
+    .connect(process.env.MONGODB_URI)
+    .then(() => {
+        console.log("Connected to MongoDB Atlas");
+
+        app.listen(PORT, () => {
+            console.log(`TaskFlow server running on http://localhost:${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error("MongoDB connection failed:", error.message);
+    });
