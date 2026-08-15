@@ -9,6 +9,12 @@ const totalTasks = document.getElementById("total-tasks");
 const pendingTasks = document.getElementById("pending-tasks");
 const completedTasks = document.getElementById("completed-tasks");
 
+const highPriorityTasks = document.getElementById("high-priority-tasks");
+const completionPercentage =
+    document.getElementById("completion-percentage");
+const completionProgress =
+    document.getElementById("completion-progress");
+
 let tasks = JSON.parse(localStorage.getItem("taskflow_tasks")) || [];
 
 function saveTasks() {
@@ -243,12 +249,29 @@ function deleteTask(taskId) {
 }
 
 function updateStatistics() {
-    const completed = tasks.filter(task => task.completed).length;
-    const pending = tasks.length - completed;
+    const total = tasks.length;
 
-    totalTasks.textContent = tasks.length;
+    const completed = tasks.filter(function (task) {
+        return task.completed;
+    }).length;
+
+    const pending = total - completed;
+
+    const highPriority = tasks.filter(function (task) {
+        return task.priority === "high";
+    }).length;
+
+    const percentage = total === 0
+        ? 0
+        : Math.round((completed / total) * 100);
+
+    totalTasks.textContent = total;
     pendingTasks.textContent = pending;
     completedTasks.textContent = completed;
+    highPriorityTasks.textContent = highPriority;
+
+    completionPercentage.textContent = `${percentage}%`;
+    completionProgress.style.width = `${percentage}%`;
 }
 
 taskSearch.addEventListener("input", function () {
