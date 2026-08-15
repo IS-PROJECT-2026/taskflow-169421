@@ -1,6 +1,7 @@
 const taskForm = document.getElementById("task-form");
 const taskList = document.getElementById("task-list");
 const taskSearch = document.getElementById("task-search");
+const taskFilter = document.getElementById("task-filter");
 
 const totalTasks = document.getElementById("total-tasks");
 const pendingTasks = document.getElementById("pending-tasks");
@@ -44,11 +45,26 @@ function displayTasks() {
     taskList.innerHTML = "";
 
     const searchTerm = taskSearch.value.toLowerCase().trim();
+    const filter = taskFilter.value;
 
     let filteredTasks = tasks;
 
+    // Filter by task status
+    if (filter === "pending") {
+        filteredTasks = filteredTasks.filter(function (task) {
+            return !task.completed;
+        });
+    }
+
+    if (filter === "completed") {
+        filteredTasks = filteredTasks.filter(function (task) {
+            return task.completed;
+        });
+    }
+
+    // Filter by search term
     if (searchTerm !== "") {
-        filteredTasks = tasks.filter(function (task) {
+        filteredTasks = filteredTasks.filter(function (task) {
             return (
                 task.title.toLowerCase().includes(searchTerm) ||
                 task.description.toLowerCase().includes(searchTerm)
@@ -68,7 +84,8 @@ function displayTasks() {
     filteredTasks.forEach(function (task) {
         const taskElement = document.createElement("div");
 
-        taskElement.className = `task-card ${task.completed ? "completed" : ""}`;
+        taskElement.className =
+            `task-card ${task.completed ? "completed" : ""}`;
 
         taskElement.innerHTML = `
             <h3>${task.title}</h3>
@@ -80,6 +97,7 @@ function displayTasks() {
             </span>
 
             <div class="task-actions">
+
                 <button
                     class="edit-btn"
                     onclick="editTask(${task.id})"
@@ -91,7 +109,9 @@ function displayTasks() {
                     class="complete-btn"
                     onclick="toggleTask(${task.id})"
                 >
-                    ${task.completed ? "Mark as Pending" : "Mark as Complete"}
+                    ${task.completed
+                        ? "Mark as Pending"
+                        : "Mark as Complete"}
                 </button>
 
                 <button
@@ -100,6 +120,7 @@ function displayTasks() {
                 >
                     Delete
                 </button>
+
             </div>
         `;
 
@@ -197,6 +218,10 @@ function updateStatistics() {
 }
 
 taskSearch.addEventListener("input", function () {
+    displayTasks();
+});
+
+taskFilter.addEventListener("change", function () {
     displayTasks();
 });
 
