@@ -2,6 +2,8 @@ const taskForm = document.getElementById("task-form");
 const taskList = document.getElementById("task-list");
 const taskSearch = document.getElementById("task-search");
 const taskFilter = document.getElementById("task-filter");
+const taskPriority = document.getElementById("task-priority");
+const taskDueDate = document.getElementById("task-due-date");
 
 const totalTasks = document.getElementById("total-tasks");
 const pendingTasks = document.getElementById("pending-tasks");
@@ -18,6 +20,8 @@ taskForm.addEventListener("submit", function (event) {
 
     const title = document.getElementById("task-title").value.trim();
     const description = document.getElementById("task-description").value.trim();
+    const priority = taskPriority.value;
+    const dueDate = taskDueDate.value;
 
     if (title === "") {
         alert("Please enter a task title.");
@@ -28,6 +32,8 @@ taskForm.addEventListener("submit", function (event) {
         id: Date.now(),
         title: title,
         description: description,
+        priority: priority,
+        dueDate: dueDate,
         completed: false
     };
 
@@ -88,10 +94,19 @@ function displayTasks() {
             `task-card ${task.completed ? "completed" : ""}`;
 
         taskElement.innerHTML = `
-            <h3>${task.title}</h3>
+    <h3>${task.title}</h3>
 
-            <p>${task.description}</p>
+    <p>${task.description}</p>
 
+    <div class="task-details">
+        <span class="task-priority priority-${task.priority || "medium"}">
+            Priority: ${task.priority || "medium"}
+        </span>
+
+        <span class="task-due-date">
+            Due: ${task.dueDate || "No due date"}
+        </span>
+    </div>
             <span class="task-status">
                 ${task.completed ? "Completed" : "Pending"}
             </span>
@@ -164,6 +179,23 @@ function editTask(taskId) {
         "Enter the new task description:",
         task.description
     );
+    const updatedPriority = prompt(
+    "Enter priority (low, medium, high):",
+    task.priority || "medium"
+);
+
+if (updatedPriority === null) {
+    return;
+}
+
+const updatedDueDate = prompt(
+    "Enter due date (YYYY-MM-DD), or leave blank:",
+    task.dueDate || ""
+);
+
+if (updatedDueDate === null) {
+    return;
+}
 
     if (updatedDescription === null) {
         return;
@@ -176,6 +208,8 @@ function editTask(taskId) {
 
     task.title = updatedTitle.trim();
     task.description = updatedDescription.trim();
+    task.priority = updatedPriority.trim().toLowerCase() || "medium";
+task.dueDate = updatedDueDate.trim();
 
     saveTasks();
     displayTasks();
