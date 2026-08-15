@@ -3,14 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow</title>
+
+    <title>TaskFlow - Task Manager</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <h1>TaskFlow</h1>
-    <p>Manage your tasks efficiently.</p>
+    <header class="header">
+        <div class="container">
+            <h1>TaskFlow</h1>
+            <p>Organize your work. Stay productive.</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="task-form-section">
+            <h2>Create a Task</h2>
+
+            <form id="task-form">
+
+                <div class="form-group">
+                    <label for="task-title">Task Title</label>
+                    <input
+                        type="text"
+                        id="task-title"
+                        placeholder="Enter task title"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea
+                        id="task-description"
+                        placeholder="Enter task description"
+                    ></textarea>
+                </div>
+
+                <button type="submit">Add Task</button>
+
+            </form>
+        </section>
+
+
+        <section class="statistics">
+
+            <div class="stat-card">
+                <h3>Total</h3>
+                <span id="total-tasks">0</span>
+            </div>
+
+            <div class="stat-card">
+                <h3>Pending</h3>
+                <span id="pending-tasks">0</span>
+            </div>
+
+            <div class="stat-card">
+                <h3>Completed</h3>
+                <span id="completed-tasks">0</span>
+            </div>
+
+        </section>
+
+
+        <section class="tasks-section">
+
+            <div class="section-header">
+                <h2>My Tasks</h2>
+
+                <select id="task-filter">
+                    <option value="all">All Tasks</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div id="task-list">
+
+                <div class="empty-state">
+                    <p>No tasks yet. Create your first task!</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>&copy; 2026 TaskFlow</p>
+    </footer>
 
     <script src="js/script.js"></script>
+
 </body>
 </html>
