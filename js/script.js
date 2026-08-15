@@ -1,5 +1,6 @@
 const taskForm = document.getElementById("task-form");
 const taskList = document.getElementById("task-list");
+const taskSearch = document.getElementById("task-search");
 
 const totalTasks = document.getElementById("total-tasks");
 const pendingTasks = document.getElementById("pending-tasks");
@@ -42,22 +43,36 @@ taskForm.addEventListener("submit", function (event) {
 function displayTasks() {
     taskList.innerHTML = "";
 
-    if (tasks.length === 0) {
+    const searchTerm = taskSearch.value.toLowerCase().trim();
+
+    let filteredTasks = tasks;
+
+    if (searchTerm !== "") {
+        filteredTasks = tasks.filter(function (task) {
+            return (
+                task.title.toLowerCase().includes(searchTerm) ||
+                task.description.toLowerCase().includes(searchTerm)
+            );
+        });
+    }
+
+    if (filteredTasks.length === 0) {
         taskList.innerHTML = `
             <div class="empty-state">
-                <p>No tasks yet. Create your first task!</p>
+                <p>No tasks found.</p>
             </div>
         `;
         return;
     }
 
-    tasks.forEach(function (task) {
+    filteredTasks.forEach(function (task) {
         const taskElement = document.createElement("div");
 
         taskElement.className = `task-card ${task.completed ? "completed" : ""}`;
 
         taskElement.innerHTML = `
             <h3>${task.title}</h3>
+
             <p>${task.description}</p>
 
             <span class="task-status">
@@ -65,27 +80,27 @@ function displayTasks() {
             </span>
 
             <div class="task-actions">
-    <button
-        class="edit-btn"
-        onclick="editTask(${task.id})"
-    >
-        Edit
-    </button>
+                <button
+                    class="edit-btn"
+                    onclick="editTask(${task.id})"
+                >
+                    Edit
+                </button>
 
-    <button
-        class="complete-btn"
-        onclick="toggleTask(${task.id})"
-    >
-        ${task.completed ? "Mark as Pending" : "Mark as Complete"}
-    </button>
+                <button
+                    class="complete-btn"
+                    onclick="toggleTask(${task.id})"
+                >
+                    ${task.completed ? "Mark as Pending" : "Mark as Complete"}
+                </button>
 
-    <button
-        class="delete-btn"
-        onclick="deleteTask(${task.id})"
-    >
-        Delete
-    </button>
-</div>
+                <button
+                    class="delete-btn"
+                    onclick="deleteTask(${task.id})"
+                >
+                    Delete
+                </button>
+            </div>
         `;
 
         taskList.appendChild(taskElement);
@@ -180,5 +195,10 @@ function updateStatistics() {
     pendingTasks.textContent = pending;
     completedTasks.textContent = completed;
 }
+
+taskSearch.addEventListener("input", function () {
+    displayTasks();
+});
+
 displayTasks();
 updateStatistics();

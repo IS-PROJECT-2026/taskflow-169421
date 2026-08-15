@@ -229,3 +229,26 @@ button:hover {
 .delete-btn:hover {
     opacity: 0.9;
 }
+.task-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#task-search {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 250px;
+}
+
+@media (max-width: 768px) {
+    .task-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #task-search {
+        width: 100%;
+    }
+}
