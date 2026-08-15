@@ -60,20 +60,27 @@ function displayTasks() {
             </span>
 
             <div class="task-actions">
-                <button
-                    class="edit-btn"
-                    onclick="editTask(${task.id})"
-                >
-                    Edit
-                </button>
+    <button
+        class="edit-btn"
+        onclick="editTask(${task.id})"
+    >
+        Edit
+    </button>
 
-                <button
-                    class="complete-btn"
-                    onclick="toggleTask(${task.id})"
-                >
-                    ${task.completed ? "Mark as Pending" : "Mark as Complete"}
-                </button>
-            </div>
+    <button
+        class="complete-btn"
+        onclick="toggleTask(${task.id})"
+    >
+        ${task.completed ? "Mark as Pending" : "Mark as Complete"}
+    </button>
+
+    <button
+        class="delete-btn"
+        onclick="deleteTask(${task.id})"
+    >
+        Delete
+    </button>
+</div>
         `;
 
         taskList.appendChild(taskElement);
@@ -127,6 +134,31 @@ function editTask(taskId) {
 
     task.title = updatedTitle.trim();
     task.description = updatedDescription.trim();
+
+    displayTasks();
+    updateStatistics();
+}
+
+function deleteTask(taskId) {
+    const task = tasks.find(function (task) {
+        return task.id === taskId;
+    });
+
+    if (!task) {
+        return;
+    }
+
+    const confirmed = confirm(
+        `Are you sure you want to delete "${task.title}"?`
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    tasks = tasks.filter(function (task) {
+        return task.id !== taskId;
+    });
 
     displayTasks();
     updateStatistics();
