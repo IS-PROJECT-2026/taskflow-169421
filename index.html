@@ -68,27 +68,38 @@
         </section>
 
 
-        <section class="tasks-section">
+        <section class="tasks-section"> 
 
-            <div class="section-header">
-                <h2>My Tasks</h2>
+    <div class="section-header"> 
+        <h2>My Tasks</h2> 
 
-                <select id="task-filter">
-                    <option value="all">All Tasks</option>
-                    <option value="pending">Pending</option>
-                    <option value="completed">Completed</option>
-                </select>
-            </div>
+        <div class="task-controls">
 
-            <div id="task-list">
+            <input 
+                type="text" 
+                id="task-search" 
+                placeholder="Search tasks..."
+            >
 
-                <div class="empty-state">
-                    <p>No tasks yet. Create your first task!</p>
-                </div>
+            <select id="task-filter"> 
+                <option value="all">All Tasks</option> 
+                <option value="pending">Pending</option> 
+                <option value="completed">Completed</option> 
+            </select>
 
-            </div>
+        </div>
 
-        </section>
+    </div> 
+
+    <div id="task-list"> 
+
+        <div class="empty-state"> 
+            <p>No tasks yet. Create your first task!</p> 
+        </div> 
+
+    </div> 
+
+</section>
 
     </main>
 
