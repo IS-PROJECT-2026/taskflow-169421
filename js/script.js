@@ -5,7 +5,11 @@ const totalTasks = document.getElementById("total-tasks");
 const pendingTasks = document.getElementById("pending-tasks");
 const completedTasks = document.getElementById("completed-tasks");
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("taskflow_tasks")) || [];
+
+function saveTasks() {
+    localStorage.setItem("taskflow_tasks", JSON.stringify(tasks));
+}
 
 taskForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -27,6 +31,7 @@ taskForm.addEventListener("submit", function (event) {
 
     tasks.push(task);
 
+    saveTasks();
     displayTasks();
     updateStatistics();
 
@@ -99,6 +104,7 @@ function toggleTask(taskId) {
         return task;
     });
 
+    saveTasks();
     displayTasks();
     updateStatistics();
 }
@@ -135,6 +141,7 @@ function editTask(taskId) {
     task.title = updatedTitle.trim();
     task.description = updatedDescription.trim();
 
+    saveTasks();
     displayTasks();
     updateStatistics();
 }
@@ -160,6 +167,7 @@ function deleteTask(taskId) {
         return task.id !== taskId;
     });
 
+    saveTasks();
     displayTasks();
     updateStatistics();
 }
@@ -172,3 +180,5 @@ function updateStatistics() {
     pendingTasks.textContent = pending;
     completedTasks.textContent = completed;
 }
+displayTasks();
+updateStatistics();
