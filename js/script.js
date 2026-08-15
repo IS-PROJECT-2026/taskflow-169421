@@ -2,8 +2,11 @@ const taskForm = document.getElementById("task-form");
 const taskList = document.getElementById("task-list");
 const taskSearch = document.getElementById("task-search");
 const taskFilter = document.getElementById("task-filter");
+
 const taskPriority = document.getElementById("task-priority");
 const taskDueDate = document.getElementById("task-due-date");
+
+const formMessage = document.getElementById("form-message");
 
 const totalTasks = document.getElementById("total-tasks");
 const pendingTasks = document.getElementById("pending-tasks");
@@ -20,6 +23,44 @@ let tasks = JSON.parse(localStorage.getItem("taskflow_tasks")) || [];
 function saveTasks() {
     localStorage.setItem("taskflow_tasks", JSON.stringify(tasks));
 }
+function validateTaskForm(title, description, priority, dueDate) {
+    const errors = [];
+
+    if (title === "") {
+        errors.push("Task title is required.");
+    }
+
+    if (title.length > 0 && title.length < 3) {
+        errors.push("Task title must be at least 3 characters.");
+    }
+
+    if (title.length > 100) {
+        errors.push("Task title cannot exceed 100 characters.");
+    }
+
+    if (description.length > 500) {
+        errors.push("Description cannot exceed 500 characters.");
+    }
+
+    const validPriorities = ["low", "medium", "high"];
+
+    if (!validPriorities.includes(priority)) {
+        errors.push("Please select a valid priority.");
+    }
+
+    if (dueDate !== "") {
+        const selectedDate = new Date(dueDate);
+        const today = new Date();
+
+        today.setHours(0, 0, 0, 0);
+
+        if (selectedDate < today) {
+            errors.push("Due date cannot be in the past.");
+        }
+    }
+
+    return errors;
+}
 
 taskForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -29,10 +70,23 @@ taskForm.addEventListener("submit", function (event) {
     const priority = taskPriority.value;
     const dueDate = taskDueDate.value;
 
-    if (title === "") {
-        alert("Please enter a task title.");
-        return;
-    }
+   const errors = validateTaskForm(
+    title,
+    description,
+    priority,
+    dueDate
+);
+
+if (errors.length > 0) {
+    formMessage.className = "form-message error";
+    formMessage.innerHTML = `
+        <ul>
+            ${errors.map(error => `<li>${error}</li>`).join("")}
+        </ul>
+    `;
+
+    return;
+}
 
     const task = {
         id: Date.now(),
