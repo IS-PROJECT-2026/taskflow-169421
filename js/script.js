@@ -59,12 +59,21 @@ function displayTasks() {
                 ${task.completed ? "Completed" : "Pending"}
             </span>
 
-            <button
-                class="complete-btn"
-                onclick="toggleTask(${task.id})"
-            >
-                ${task.completed ? "Mark as Pending" : "Mark as Complete"}
-            </button>
+            <div class="task-actions">
+                <button
+                    class="edit-btn"
+                    onclick="editTask(${task.id})"
+                >
+                    Edit
+                </button>
+
+                <button
+                    class="complete-btn"
+                    onclick="toggleTask(${task.id})"
+                >
+                    ${task.completed ? "Mark as Pending" : "Mark as Complete"}
+                </button>
+            </div>
         `;
 
         taskList.appendChild(taskElement);
@@ -82,6 +91,42 @@ function toggleTask(taskId) {
 
         return task;
     });
+
+    displayTasks();
+    updateStatistics();
+}
+
+function editTask(taskId) {
+    const task = tasks.find(function (task) {
+        return task.id === taskId;
+    });
+
+    if (!task) {
+        return;
+    }
+
+    const updatedTitle = prompt("Enter the new task title:", task.title);
+
+    if (updatedTitle === null) {
+        return;
+    }
+
+    const updatedDescription = prompt(
+        "Enter the new task description:",
+        task.description
+    );
+
+    if (updatedDescription === null) {
+        return;
+    }
+
+    if (updatedTitle.trim() === "") {
+        alert("Task title cannot be empty.");
+        return;
+    }
+
+    task.title = updatedTitle.trim();
+    task.description = updatedDescription.trim();
 
     displayTasks();
     updateStatistics();
