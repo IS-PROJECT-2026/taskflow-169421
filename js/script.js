@@ -49,18 +49,43 @@ function displayTasks() {
     tasks.forEach(function (task) {
         const taskElement = document.createElement("div");
 
-        taskElement.className = "task-card";
+        taskElement.className = `task-card ${task.completed ? "completed" : ""}`;
 
         taskElement.innerHTML = `
             <h3>${task.title}</h3>
             <p>${task.description}</p>
-            <span>${task.completed ? "Completed" : "Pending"}</span>
+
+            <span class="task-status">
+                ${task.completed ? "Completed" : "Pending"}
+            </span>
+
+            <button
+                class="complete-btn"
+                onclick="toggleTask(${task.id})"
+            >
+                ${task.completed ? "Mark as Pending" : "Mark as Complete"}
+            </button>
         `;
 
         taskList.appendChild(taskElement);
     });
 }
 
+function toggleTask(taskId) {
+    tasks = tasks.map(function (task) {
+        if (task.id === taskId) {
+            return {
+                ...task,
+                completed: !task.completed
+            };
+        }
+
+        return task;
+    });
+
+    displayTasks();
+    updateStatistics();
+}
 
 function updateStatistics() {
     const completed = tasks.filter(task => task.completed).length;
