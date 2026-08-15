@@ -25,7 +25,12 @@
 
             <form id="task-form" novalidate>
                 
-                <div id="form-message" class="form-message"></div>
+                <div
+    id="form-message"
+    class="form-message"
+    role="alert"
+    aria-live="polite"
+></div>
             
 
                 <div class="form-group">
@@ -117,13 +122,23 @@
 
         <div class="task-controls">
 
-            <input 
-                type="text" 
-                id="task-search" 
-                placeholder="Search tasks..."
+            <label for="task-search" class="visually-hidden">
+    Search tasks
+</label>
+
+<input
+    type="search"
+    id="task-search"
+    placeholder="Search tasks..."
+    aria-label="Search tasks"
+>
             >
 
-            <select id="task-filter"> 
+            <label for="task-filter" class="visually-hidden">
+    Filter tasks
+</label>
+
+<select id="task-filter" aria-label="Filter tasks"> 
                 <option value="all">All Tasks</option> 
                 <option value="pending">Pending</option> 
                 <option value="completed">Completed</option> 
