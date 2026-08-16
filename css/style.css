@@ -439,3 +439,7 @@ select:focus-visible {
         min-height: 44px;
     }
 }
+/* Accessibility improvements */
+.task-card:focus-within {
+    outline: 2px solid #333;
+}
