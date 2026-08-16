@@ -4,7 +4,7 @@
 
 * **Full Name:** Jamie Nguru Kibanya
 * **GitHub Username:** JamieNguru
-* **Email:** jamie.kibanya@strathhmore.edu
+* **Email:** jamie.kibanya@strathmore.edu
 
 ---
 
