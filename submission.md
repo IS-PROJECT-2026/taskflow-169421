@@ -2,58 +2,50 @@
 
 ## 1. Student Details
 
-- **Full Name:** Jamie Nguru Kibanya
-- **GitHub Username:** JamieNguru
-- **Email:** jamie.kibanya@strathmore.edu
-- **Admission Number:** 169421
-- **Team:** GROUP 4D
+* **Full Name:** Jamie Nguru Kibanya
+* **GitHub Username:** JamieNguru
+* **Email:** jamie.kibanya@strathhmore.edu
 
 ---
 
 ## 2. Deployed Project Link
 
-- **Live GitHub Pages URL:** https://is-project-2026.github.io/taskflow-169421/
+* **Live GitHub Pages URL:** https://is-project-2026.github.io/taskflow-169421/
 
 ---
 
 ## 3. Reflection — Grounded in Your Git History
 
-> **Rules:** Every answer below must include a direct link to the specific commit, PR, issue, or branch in the repository that demonstrates what is being described.
+> **Rules:** Every answer below must include a direct link to the specific commit, PR, issue, or branch in the repository that demonstrates what is being described. Answers without working links will not be graded.
 
 ### A. Your Best Commit
 
-- **Commit URL:** [To be completed after selecting the strongest commit]
-- **Why this one?**
+* **Commit URL:** https://github.com/IS-PROJECT-2026/taskflow-169421/commit/2bafcb702b2ed8717fab386450835c22b27de151
+* **Why this one?**
 
-[To be completed after reviewing the Git commit history.]
-
----
+  This commit demonstrates a clear conventional commit message with an appropriate type tag and a concise description of the change. It clearly communicates what was changed and keeps the Git history easy to understand.
 
 ### B. A Mistake or Struggle
 
-- **Link to the evidence:** [To be completed]
-- **What happened and how did you recover?**
+* **Link to the evidence:** https://github.com/IS-PROJECT-2026/taskflow-169421/pull/42
+* **What happened and how did you recover?**
 
-[To be completed using an actual commit, PR, issue, or branch from the project history.]
-
----
+  During development, I encountered a Git workflow issue while working with branches and merge conflicts. I recovered by checking the repository status, identifying the branch and merge state, resolving the conflicting changes, and completing the merge with a clean commit. This helped me understand the importance of checking Git's current state before attempting another merge or pull.
 
 ### C. A Pull Request You're Proud Of
 
-- **PR URL:** [To be completed]
-- **What did you check before merging?**
+* **PR URL:** https://github.com/IS-PROJECT-2026/taskflow-169421/pull/35
+* **What did you check before merging?**
 
-[To be completed using an actual Pull Request from the repository.]
-
----
+  I reviewed the changed files, checked that the implementation matched the linked issue, verified that the application remained functional, and confirmed that the changes were appropriate before merging the Pull Request.
 
 ### D. One Thing You Would Do Differently
 
-- **What would you change?**
+* **What would you change?**
 
-[To be completed based on an actual workflow decision made during development.]
+  If I restarted the project, I would establish a more consistent branch and Git workflow from the beginning, including clearer issue-linked branch names and more frequent pushes to the remote repository. This would make branch management, conflict creation, and project traceability easier to manage.
 
-- **Link to the evidence of the original decision:** [To be completed]
+* **Link to the evidence of the original decision:** https://github.com/IS-PROJECT-2026/taskflow-169421/issues/1
 
 ---
 
@@ -61,47 +53,49 @@
 
 ### A. Milestones and Issues
 
-*Provide a screenshot showing the active milestones and the granular tracking issues linked directly to them.*
+The screenshot below demonstrates the use of GitHub milestones and granular issues to divide the project into manageable development tasks.
 
-[PASTE MILESTONE SCREENSHOT DIRECTLY HERE]
+**Screenshot:**
 
-- **Caption:** TaskFlow milestones and their associated development issues.
+![Milestones and Issues](images/Milestones.png)
 
----
+* **Caption:** GitHub milestones and issues showing the project's development tasks organized and tracked throughout the project.
 
 ### B. Project Board
 
-*Provide a screenshot of the GitHub Project Board showing tasks organized dynamically across To Do, In Progress, and Done.*
+The project board was used to track development progress by organizing issues according to their current status.
 
-[PASTE PROJECT BOARD SCREENSHOT DIRECTLY HERE]
+**Screenshot:**
 
-- **Caption:** TaskFlow development tasks progressing through the project board.
+![Project Board](images/Taskflow_Projectboard.png)
 
----
+* **Caption:** GitHub Project Board showing project issues organized across development stages such as To Do, In Progress, and Done.
 
 ### C. Branching Architecture
 
-*Provide a screenshot showing the local or remote Git branch list and the issue-linked branch naming conventions.*
+The project used separate branches for different features, fixes, documentation work, styling changes, and merge-conflict demonstrations.
 
-[PASTE BRANCHING SCREENSHOT DIRECTLY HERE]
+**Screenshot:**
 
-- **Caption:** TaskFlow feature and documentation branches following the project Git workflow.
+![Project Board](images/Branches.png)
 
----
+* **Caption:** Git branch list demonstrating the use of structured branch naming conventions such as `feat/`, `fix/`, `style/`, `docs/`, and `conflict/`.
 
 ### D. Pull Requests & Traceability
 
-*Provide a screenshot of a completed Pull Request showing its relationship with the corresponding GitHub Issue.*
+Pull Requests were used to review and merge completed development work while maintaining traceability between issues and code changes.
 
-[PASTE PULL REQUEST SCREENSHOT DIRECTLY HERE]
+**Screenshot:**
 
-- **Caption:** Pull Request showing traceability between the development branch, Pull Request, and GitHub Issue.
+![Pull Requests](images/Pull_Requests.png)
+
+* **Caption:** Pull Request showing the relationship between a development issue and the corresponding implementation and merge.
 
 ---
 
 ## 5. Merge Conflict Evidence
 
-Three separate merge conflicts will be engineered using three different causes.
+Three separate merge conflicts were deliberately engineered and resolved during development. Each conflict was triggered by a different cause.
 
 ---
 
@@ -109,108 +103,84 @@ Three separate merge conflicts will be engineered using three different causes.
 
 **What cause did you use?**
 
-[To be completed after Conflict 1 is engineered.]
+Competing content changes.
+
+Two branches contained different changes to the same content, causing Git to require manual resolution.
 
 #### Step 1: Generating the Clash
 
-*Screenshot showing the merge attempt and conflict warning.*
+**Screenshot:**
 
-[PASTE SCREENSHOT OF ATTEMPTED MERGE / TERMINAL WARNING HERE]
+![Conflict 1 - Generating the clash](images/Generating_conflict_1.png)
 
-- **Caption:** Merge attempt between the conflicting branches showing the resulting conflict warning.
-
----
+* **Caption:** The merge attempt between the two conflicting branches produced a Git conflict warning because both branches contained competing changes.
 
 #### Step 2: Inside the Code Editor — Conflict Markers
 
-*Screenshot showing the raw unresolved conflict markers.*
+**Screenshot:**
 
-[PASTE SCREENSHOT OF RAW CONFLICT MARKERS HERE]
+![Conflict 1 - Merge Attempt](evidence/conflict_evidence_1.png)
 
-- **Caption:** The conflicting sections are displayed using Git's `<<<<<<<`, `=======`, and `>>>>>>>` markers before resolution.
-
----
+* **Caption:** The editor displayed Git's conflict markers, including `<<<<<<<`, `=======`, and `>>>>>>>`, showing the competing versions from the two branches. The conflicting sections were reviewed and the appropriate content was selected or combined before resolution.
 
 #### Step 3: Resolution & Clean Merge
 
-*Screenshot showing the clean Git history or completed Pull Request after the conflict was resolved.*
+**Screenshot:**
 
-[PASTE SCREENSHOT OF CLEAN RESOLUTION HERE]
+![Conflict 1 - Resolution & Clean Merge](images/Resolved_conflict_1.png)
 
-- **Caption:** The conflicting changes were manually resolved and the resulting branch was successfully merged.
-
----
-
-### Conflict 2 — Different Cause
-
-**What cause did you use?**
-
-[To be completed after Conflict 2 is engineered.]
-
-**Why does this cause trigger a conflict?**
-
-[To be completed.]
-
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 2 HERE]
-
-- **Caption:** Conflict 2 showing the conflicting branches and file.
+* **Caption:** The conflicting changes were resolved manually, the conflict markers were removed, and the resolved branch was committed and merged successfully.
 
 ---
 
-### Conflict 3 — Different Cause
+### Conflict 2 — Structural File/Directory Conflict
 
 **What cause did you use?**
 
-[To be completed after Conflict 3 is engineered.]
+Competing structural changes involving a file and directory at the same path.
 
 **Why does this cause trigger a conflict?**
 
-[To be completed.]
+One branch created `structure-demo` as a file while the other branch created `structure-demo` as a directory. Git cannot automatically maintain both a file and directory at the same path, so manual resolution was required.
 
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 3 HERE]
+**Screenshot:**
 
-- **Caption:** Conflict 3 showing the conflicting branches and file.
+![Conflict 2 - Structural Conflict](evidence/conflict_evidence_2.png)
+
+* **Caption:** Conflict 2 was created by competing structural changes to the same path. The conflict was resolved by deciding which final project structure should be retained.
+
+---
+
+### Conflict 3 — Rename/Modify Conflict
+
+**What cause did you use?**
+
+File rename versus modification.
+
+**Why does this cause trigger a conflict?**
+
+One branch renamed `css/style.css` to `css/taskflow-style.css`, while another branch modified the original `css/style.css`. Git could not automatically determine how the modification should be applied after the file was renamed, requiring manual resolution.
+
+**Screenshot:**
+
+![Conflict 3 - Rename modify conflict](evidence/conflict_evidence_3.png)
+
+* **Caption:** Conflict 3 demonstrates a rename/modify conflict involving the TaskFlow stylesheet. The conflict was manually resolved while retaining the appropriate final stylesheet structure.
 
 ---
 
 ## 6. Feedback & Evaluation
 
-- [ ] **Anonymous Evaluation Form:** [Course & Instructor Evaluation](https://forms.gle/YLybnsyXXErKEg3s9)
+To help improve this course for future engineering cohorts, please take 2 minutes to fill out the anonymous feedback form. Your honest review helps shape how this program is taught next semester!
+
+* **Anonymous Evaluation Form:** [Course & Instructor Evaluation](https://forms.gle/YLybnsyXXErKEg3s9)
 
 ---
 
 ## Final Submission
 
-Once the project is complete, the final work will be submitted through the official submission form.
+Once the repository is complete, submit the project through the official submission form.
 
-- **Submission Form:** https://forms.gle/KrT4VxtFtkU3wtYu8
+The form will stop accepting responses after **Monday, August 17th, 2026**. No late submissions will be accepted.
 
----
-
-## Project Summary
-
-TaskFlow is a functional static web-based task management application developed using HTML, CSS, and JavaScript.
-
-The system provides:
-
-- Task creation
-- Task editing
-- Task deletion
-- Task completion
-- Task search
-- Task filtering
-- Task priorities
-- Due dates
-- Task statistics
-- Completion progress
-- Form validation
-- Error handling
-- Responsive design
-- Accessibility support
-- LocalStorage persistence
-
-The application is publicly deployed through GitHub Pages.
-
-**Live Application:**
-
-https://is-project-2026.github.io/taskflow-169421/
+> **Submission Form:** https://forms.gle/KrT4VxtFtkU3wtYu8
