@@ -439,3 +439,14 @@ select:focus-visible {
         min-height: 44px;
     }
 }
+/* Task layout improvements */
+
+.task-card {
+    position: relative;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
