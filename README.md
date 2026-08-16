@@ -10,6 +10,7 @@ The application provides a simple and responsive interface for creating, editing
 
 **Live GitHub Pages URL:** https://is-project-2026.github.io/taskflow-169421/
 
+**Deployment:** Successfully deployed using GitHub Pages from the main branch.
 **Status:** TaskFlow is currently live and publicly accessible through GitHub Pages.
 
 ## Features
